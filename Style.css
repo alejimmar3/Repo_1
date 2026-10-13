@@ -1,0 +1,153 @@
+/* Importamos la fuente estilo 8-bits de Google Fonts */
+@import url('https://googleapis.com');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Press Start 2P', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* Contenedor Principal (Caja de Texto de Diálogo) */
+.dialogue-box {
+    width: 100%;
+    max-width: 700px;
+    border: 4px solid #ffffff;
+    background-color: #000000;
+    padding: 24px;
+    position: relative;
+    margin-bottom: 30px;
+    /* Simula el borde doble clásico del juego */
+    box-shadow: 0 0 0 4px #000000, 0 0 0 8px #ffffff; 
+}
+
+/* Texto de diálogo */
+.dialogue-text {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+/* Asterisco decorativo de los diálogos */
+.asterisk {
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+/* Contenedor de Estadísticas (HP / Nivel) */
+.stats-container {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.char-name {
+    margin-right: 20px;
+    color: #ffffff;
+}
+
+.char-lv {
+    margin-right: 40px;
+}
+
+.hp-label {
+    color: #ffff00; /* Amarillo para las letras HP */
+    font-size: 11px;
+    margin-right: 10px;
+}
+
+/* Barra de Vida (Fondo rojo) */
+.hp-bar-bg {
+    width: 120px;
+    height: 20px;
+    background-color: #c00000; 
+    margin-right: 15px;
+    position: relative;
+}
+
+/* Relleno de la Barra de Vida (Verde Deltarune) */
+.hp-bar-fill {
+    width: 100%; 
+    height: 100%;
+    background-color: #00ff00; 
+}
+
+.hp-numeric {
+    font-size: 14px;
+}
+
+/* Menú de Botones de Acción inferior */
+.action-menu {
+    width: 100%;
+    max-width: 700px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+/* Estilo de los Botones de Batalla */
+.btn-action {
+    background-color: #000000;
+    border: 3px solid #ff7f00; /* Borde naranja característico */
+    color: #ff7f00;
+    padding: 12px 5px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.1s ease;
+    position: relative;
+}
+
+/* Icono del alma (Corazón) oculto por defecto */
+.btn-action::before {
+    content: '❤';
+    color: #ff0000;
+    position: absolute;
+    left: 10px;
+    font-size: 14px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.1s ease;
+}
+
+/* Efectos Hover y Focus (Cuando seleccionas una acción) */
+.btn-action:hover, .btn-action:focus {
+    border-color: #ffff00; /* El borde cambia a amarillo */
+    color: #ffff00;        /* El texto cambia a amarillo */
+    padding-left: 25px;    /* Espacio para que aparezca el alma */
+    outline: none;
+}
+
+/* Mostrar y animar el corazón rojo en hover */
+.btn-action:hover::before, .btn-action:focus::before {
+    opacity: 1;
+    animation: heartBeat 0.6s infinite steps(2);
+}
+
+/* Animación de latido rígido de 8 bits para el Alma */
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
